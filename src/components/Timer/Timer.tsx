@@ -7,7 +7,7 @@ interface ITimerProps {
 }
 
 export const Timer = ({ seconds, onTimeOver }: ITimerProps) => {
-	const { time, start, pause, reset, status } = useTimer({
+	const { time, start } = useTimer({
 		endTime: 0,
 		initialTime: seconds,
 		timerType: "DECREMENTAL",

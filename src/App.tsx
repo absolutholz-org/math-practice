@@ -13,7 +13,7 @@ function App() {
 	return (
 		<div className="App">
 			<Equation />
-			<Timer seconds={2 * 60} onTimeOver={onTimeOver} />
+			<Timer seconds={10 * 60} onTimeOver={onTimeOver} />
 		</div>
 	);
 }

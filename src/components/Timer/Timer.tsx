@@ -26,6 +26,7 @@ export const Timer = ({ seconds, onTimeOver }: ITimerProps) => {
 
 	useEffect(() => {
 		start();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

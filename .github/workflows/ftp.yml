@@ -54,8 +54,7 @@ jobs:
           server: ${{ secrets.WEBGO_SFTP_HOST }}
           username: ${{ secrets.WEBGO_SFTP_USERNAME }}
           password: ${{ secrets.WEBGO_SFTP_PASSWORD }}
-          protocol: ftps
-          port: ${{ secrets.WEBGO_SFTP_PORT }}
+          protocol: ftp
           local-dir: ./build/
           server-dir: home/www/de.absolutholz.math-practice/
           log-level: verbose

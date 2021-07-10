@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { ReactComponent as SvgCheckMark } from "@mdi/svg/svg/checkbox-marked-circle-outline.svg";
 import { ReactComponent as SvgNext } from "@mdi/svg/svg/arrow-right-thick.svg";
 
+import { Button } from "../Button/Button";
+
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
 type FormEvent = React.FormEvent<HTMLFormElement>;
@@ -77,18 +79,6 @@ const StyledEquationCorrectWindowHdln = styled.section`
 
 const StyledEquationCorrectWindowFooter = styled.footer`
 	margin-top: 2rem;
-`;
-
-const StyledButton = styled.button`
-	align-items: center;
-	background: rebeccapurple;
-	border: 0;
-	border-radius: 4px;
-	color: #fff;
-	display: inline-flex;
-	font: inherit;
-	margin: 0;
-	padding: 0.5rem 1.5rem 0.6rem;
 `;
 
 const StyledSvgNext = styled(SvgNext)`
@@ -191,9 +181,9 @@ export const Equation = () => {
 							{second} = {result}
 						</div>
 						<StyledEquationCorrectWindowFooter>
-							<StyledButton onClick={onNext} type="submit">
+							<Button onClick={onNext} type="submit">
 								<span>Next</span> <StyledSvgNext />
-							</StyledButton>
+							</Button>
 						</StyledEquationCorrectWindowFooter>
 					</StyledEquationCorrectWindow>
 				</StyledEquationCorrect>

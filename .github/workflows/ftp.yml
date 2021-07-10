@@ -44,9 +44,6 @@ jobs:
       - name: Compile source
         run: yarn run build
         working-directory: ${{ env.working-directory }}
-        env:
-          REACT_APP_PUBNUB_PUBLISH_KEY: ${{ secrets.PUBNUB_PUBLISH_KEY }}
-          REACT_APP_PUBNUB_SUBSCRIBE_KEY: ${{ secrets.PUBNUB_SUBSCRIBE_KEY }}
 
       - name: Upload to host via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
@@ -55,7 +52,7 @@ jobs:
           port: ${{ secrets.WEBGO_SFTP_PORT }}
           username: ${{ secrets.WEBGO_SFTP_USERNAME }}
           password: ${{ secrets.WEBGO_SFTP_PASSWORD }}
-          protocol: ftp
+          protocol: sftp
           local-dir: ./build/
           server-dir: /home/www/de.absolutholz.math-practice/
           log-level: ${{ github.event.inputs.logLevel }}

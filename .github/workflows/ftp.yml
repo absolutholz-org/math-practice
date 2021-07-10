@@ -49,10 +49,10 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ${{ secrets.WEBGO_SFTP_HOST }}
-          port: ${{ secrets.WEBGO_SFTP_PORT }}
+          port: 21
           username: ${{ secrets.WEBGO_SFTP_USERNAME }}
           password: ${{ secrets.WEBGO_SFTP_PASSWORD }}
-          protocol: sftp
+          protocol: ftp
           local-dir: ./build/
           server-dir: /home/www/de.absolutholz.math-practice/
           log-level: ${{ github.event.inputs.logLevel }}

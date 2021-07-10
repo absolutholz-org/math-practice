@@ -1,8 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 
+import { ReactComponent as SvgCheckMark } from "@mdi/svg/svg/checkbox-marked-circle-outline.svg";
+
+import { useTimer } from "use-timer"; // https://openbase.com/js/use-timer
+
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
+type FormEvent = React.FormEvent<HTMLFormElement>;
 
 enum Operation {
 	ADDITION = 1,
@@ -19,8 +24,9 @@ enum State {
 const StyledEquation = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 4rem;
+	font-size: 5rem;
 	justify-content: center;
+	margin: 2rem 0;
 `;
 
 const StyledInput = styled.input`
@@ -32,6 +38,14 @@ const StyledInput = styled.input`
 	text-align: center;
 	width: 3ch;
 `;
+
+const StyledSvgCheckMark = styled(SvgCheckMark)`
+	font-size: 1.25rem;
+	height: 1em;
+	width: 1em;
+`;
+
+const StyledEquationCorrect = styled.div``;
 
 const max = 20;
 
@@ -60,8 +74,7 @@ export const Equation = () => {
 		setResult(result);
 	}
 
-	function onInput(event: InputEvent): void {
-		const solution = parseInt(event.target.value);
+	function checkResult(solution: number): void {
 		console.log({ solution, result, first, second });
 		if (solution === result) {
 			setState(State.CORRECT);
@@ -70,6 +83,15 @@ export const Equation = () => {
 			setState(State.INCORRECT);
 			console.log("try again");
 		}
+	}
+
+	function onSubmit(event: FormEvent): void {
+		checkResult(parseInt(inputRef?.current?.value || ""));
+		event.preventDefault();
+	}
+
+	function onInput(event: InputEvent): void {
+		checkResult(parseInt(event.target.value));
 	}
 
 	function onNext(event: ButtonEvent): void {
@@ -93,7 +115,7 @@ export const Equation = () => {
 	}, [result]);
 
 	return (
-		<form ref={formRef}>
+		<form ref={formRef} onSubmit={onSubmit}>
 			<StyledEquation>
 				<span>{first}</span>
 				<span>{operation === Operation.ADDITION ? " + " : " - "}</span>
@@ -108,22 +130,23 @@ export const Equation = () => {
 			</StyledEquation>
 
 			{state === State.CORRECT && (
-				<div>
+				<StyledEquationCorrect>
+					<StyledSvgCheckMark />
 					Correct!
 					<button onClick={onNext} type="button">
 						Next
 					</button>
-				</div>
+				</StyledEquationCorrect>
 			)}
 
-			{state === State.INCORRECT && (
+			{/* {state === State.INCORRECT && (
 				<div>
 					Incorrect!
 					<button onClick={onTryAgain} type="button">
 						Try again
 					</button>
 				</div>
-			)}
+			)} */}
 		</form>
 	);
 };

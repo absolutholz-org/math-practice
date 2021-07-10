@@ -1,9 +1,17 @@
 import React from "react";
-
-import "./App.css";
+import styled from "styled-components";
 
 import { Equation } from "./components/Equation/Equation";
 import { Timer } from "./components/Timer/Timer";
+import { DateDisplay } from "./components/DateDisplay/DateDisplay";
+
+const StyledApp = styled.div`
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+`;
 
 function App() {
 	function onTimeOver() {
@@ -11,10 +19,11 @@ function App() {
 	}
 
 	return (
-		<div className="App">
+		<StyledApp>
 			<Equation />
 			<Timer seconds={10 * 60} onTimeOver={onTimeOver} />
-		</div>
+			<DateDisplay date={new Date()} />
+		</StyledApp>
 	);
 }
 

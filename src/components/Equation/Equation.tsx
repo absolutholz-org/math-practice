@@ -127,13 +127,10 @@ export const Equation = () => {
 	}
 
 	function checkResult(solution: number): void {
-		console.log({ solution, result, first, second });
 		if (solution === result) {
 			setState(State.CORRECT);
-			console.log("good job");
 		} else {
 			setState(State.INCORRECT);
-			console.log("try again");
 		}
 	}
 

@@ -15,9 +15,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -59,6 +56,6 @@ jobs:
           password: ${{ secrets.WEBGO_SFTP_PASSWORD }}
           protocol: ftps
           port: ${{ secrets.WEBGO_SFTP_PORT }}
-          local-dir: ./build
-          server-dir: home/www/de.absolutholz.math-practice
+          local-dir: ./build/
+          server-dir: home/www/de.absolutholz.math-practice/
           log-level: verbose

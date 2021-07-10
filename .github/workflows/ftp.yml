@@ -9,7 +9,7 @@ on:
       logLevel:
         description: "minimal | standard | verbose"
         required: true
-        default: "standard"
+        default: "minimal"
   # Trigger the workflow on push or pull request,
   # but only for the main branch
   push:
@@ -57,4 +57,4 @@ jobs:
           protocol: ftp
           local-dir: ./build/
           server-dir: home/www/de.absolutholz.math-practice/
-          log-level: verbose
+          log-level: ${{ github.event.inputs.logLevel }}

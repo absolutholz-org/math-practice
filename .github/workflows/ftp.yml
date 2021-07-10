@@ -4,6 +4,12 @@ name: Deploy and Release via FTP
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "minimal | standard | verbose"
+        required: true
+        default: "standard"
   # Trigger the workflow on push or pull request,
   # but only for the main branch
   push:
@@ -12,12 +18,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      logLevel:
-      description: "minimal | standard | verbose"
-      required: true
-      default: "standard"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

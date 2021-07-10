@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Equation } from "./components/Equation/Equation";
 import { Timer } from "./components/Timer/Timer";
 import { DateDisplay } from "./components/DateDisplay/DateDisplay";
+import { Button } from "./components/Button/Button";
 
 const StyledApp = styled.div`
 	align-items: center;
@@ -32,13 +33,19 @@ function App() {
 		setState(State.RUNNING);
 	}
 
+	function reset() {
+		setState(State.NOT_STARTED);
+	}
+
 	return (
 		<StyledApp>
 			{state === State.NOT_STARTED && (
-				<div>
-					Ready?
-					<button onClick={start}>Start practicing</button>
-				</div>
+				<>
+					<h1>Ready to practice your math skills?</h1>
+					<div>
+						<Button onClick={start}>Start</Button>
+					</div>
+				</>
 			)}
 			{state === State.RUNNING && (
 				<>
@@ -47,7 +54,14 @@ function App() {
 					<DateDisplay date={new Date()} />
 				</>
 			)}
-			{state === State.FINISHED && <div>Good Job!</div>}
+			{state === State.FINISHED && (
+				<>
+					<h1>Good Job!</h1>
+					<div>
+						<Button onClick={reset}>Practice some more</Button>
+					</div>
+				</>
+			)}
 		</StyledApp>
 	);
 }

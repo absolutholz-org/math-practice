@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 import { ReactComponent as SvgCheckMark } from "@mdi/svg/svg/checkbox-marked-circle-outline.svg";
 
-import { useTimer } from "use-timer"; // https://openbase.com/js/use-timer
-
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
 type FormEvent = React.FormEvent<HTMLFormElement>;
@@ -30,8 +28,9 @@ const StyledEquation = styled.div`
 `;
 
 const StyledInput = styled.input`
-	background: #efefef;
+	background: none;
 	border: 0;
+	border-bottom: 2px solid;
 	font: inherit;
 	line-height: 1;
 	padding: 0 0 0.1em;
@@ -100,7 +99,7 @@ export const Equation = () => {
 		inputRef.current?.focus();
 	}
 
-	function onTryAgain(event: ButtonEvent): void {}
+	// function onTryAgain(event: ButtonEvent): void {}
 
 	useEffect(() => {
 		createEquation();

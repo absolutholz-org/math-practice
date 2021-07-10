@@ -33,6 +33,7 @@ const StyledInput = styled.input`
 	border-bottom: 2px solid;
 	font: inherit;
 	line-height: 1;
+	outline: none;
 	padding: 0 0 0.1em;
 	text-align: center;
 	width: 3ch;
@@ -124,7 +125,7 @@ export const Equation = () => {
 					inputMode="numeric"
 					onChange={onInput}
 					ref={inputRef}
-					type="number"
+					type="text"
 				/>
 			</StyledEquation>
 
